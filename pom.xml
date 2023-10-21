@@ -13,7 +13,7 @@
   <url>https://moodle.univ-tlse3.fr/course/view.php?id=2838</url>
 
   <properties>
-    <java.version>1.8</java.version>
+    <java.version>11</java.version>
     <junit-jupiter.version>5.5.2</junit-jupiter.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
