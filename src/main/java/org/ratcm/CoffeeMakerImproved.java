@@ -2,7 +2,7 @@ package org.ratcm;
 
 import org.ratcm.exceptions.InventoryException;
 
-public class CoffeeMaker {
+public class CoffeeMakerImproved {
 	/** Array of recipes in coffee maker */
 	private static RecipeBook recipeBook;
 	/** Inventory of the coffee maker */
@@ -12,7 +12,7 @@ public class CoffeeMaker {
 	 * Constructor for the coffee maker
 	 *
 	 */
-	public CoffeeMaker() {
+	public CoffeeMakerImproved() {
 		recipeBook = new RecipeBook();
 		inventory = new Inventory();
 	}
@@ -81,21 +81,17 @@ public class CoffeeMaker {
 	 * Returns the change of a user's beverage purchase, or the user's money if the
 	 * beverage cannot be made
 	 * 
-	 * @param recipeToPurchase
+	 * @param recipeNb
 	 * @param amtPaid
 	 * @return int
 	 */
-	public int makeCoffee(int recipeToPurchase, int amtPaid) {
+	public int makeCoffee(int recipeNb, int amtPaid) {
 		int change = 0;
 
-		if (getRecipes()[recipeToPurchase] == null) {
-			change = amtPaid;
-		} else if (getRecipes()[recipeToPurchase].getPrice() <= amtPaid) {
-			if (inventory.useIngredients(getRecipes()[recipeToPurchase])) {
-				change = amtPaid - getRecipes()[recipeToPurchase].getPrice();
-			} else {
-				change = amtPaid;
-			}
+		final Recipe recipeToPurchase = getRecipes()[recipeNb];
+		final int beveragePrice = recipeToPurchase != null ? recipeToPurchase.getPrice() : null;
+		if ((recipeToPurchase != null) && (beveragePrice <= amtPaid) && (inventory.useIngredients(recipeToPurchase))) {
+			change = amtPaid - beveragePrice;
 		} else {
 			change = amtPaid;
 		}

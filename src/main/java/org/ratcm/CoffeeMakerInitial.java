@@ -2,7 +2,7 @@ package org.ratcm;
 
 import org.ratcm.exceptions.InventoryException;
 
-public class CoffeeMaker {
+public class CoffeeMakerInitial {
 	/** Array of recipes in coffee maker */
 	private static RecipeBook recipeBook;
 	/** Inventory of the coffee maker */
@@ -12,7 +12,7 @@ public class CoffeeMaker {
 	 * Constructor for the coffee maker
 	 *
 	 */
-	public CoffeeMaker() {
+	public CoffeeMakerInitial() {
 		recipeBook = new RecipeBook();
 		inventory = new Inventory();
 	}
